@@ -9,6 +9,12 @@ var dbhelper = require('./dynamodbHelper');
  * http://amzn.to/1LGWsLG
  */
 
+// --------------- Some uesful function -----------------------------------------
+function isEmpty(obj){
+    return Object.keys(obj).length !== 0;
+}
+
+
 
 // --------------- Helpers that build all of the responses -----------------------
 
@@ -82,41 +88,43 @@ function handleSessionEndRequest(callback) {
     callback({}, buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
 }
 
-function createFavoriteColorAttributes(favoriteColor) {
-    return {
-        favoriteColor,
-    };
-}
-
 
 
 function handleIntentRequest(intentRequest, session, callback) {
 
     console.log('state:' + intentRequest.dialogState)
-    if (intentRequest.dialogState !== "COMPLETED") {
+    console.log('intentRequest: ' + JSON.stringify(intentRequest))
+    if ( intentRequest.dialogState !== "COMPLETED") {
 
         callback({}, buildDialogDelegateResponse());
 
     } else {
 
         const slots = intentRequest.intent.slots;
-        const cardTitle = intentRequest.intent.name;
-        let queryHashKey = intentRequest.intent.name
-        if (typeof slots !== 'undefined') {
-
+        let queryHashKey = intentRequest.intent.name;
+        
+        if (!isEmpty(slots)) {
+            console.log('check slots');
+            // Need slots
             if (slots instanceof Array) {
                 slots.forEach(function (element, index, arr) {
-                    queryHashKey = queryHashKey + `_${element[Object.keys(element)].value}`;
+                    let slotsValue = element[Object.keys(element)].value.replace(/ /g,"");
+                    queryHashKey = queryHashKey + `_${slotsValue}`;
                 })
             }
             else 
-                queryHashKey = queryHashKey + `_${slots[Object.keys(slots)].value}`;            
+            {   let slotsValue = slots[Object.keys(slots)].value;
+                if( slotsValue !== 'undefined')               
+                {
+                    queryHashKey = queryHashKey + `_${slotsValue.replace(/ /g,"")}`;
+                }   
+            }         
 
             console.log(queryHashKey)
         }
 
 
-
+        const cardTitle = intentRequest.intent.name;
         dbhelper(queryHashKey, function (res) {
             let speechOutput = res;
             let reprompt = res;
