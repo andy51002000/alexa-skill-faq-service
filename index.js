@@ -11,7 +11,7 @@ var dbhelper = require('./dynamodbHelper');
 
 // --------------- Some uesful function -----------------------------------------
 function isEmpty(obj){
-    return Object.keys(obj).length !== 0;
+    return Object.keys(obj).length === 0;
 }
 
 
