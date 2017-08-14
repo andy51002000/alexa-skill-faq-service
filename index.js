@@ -196,7 +196,7 @@ function onSessionEnded(sessionEndedRequest, session) {
 // etc.) The JSON body of the request is provided in the event parameter.
 exports.handler = (event, context, callback) => {
     try {
-        console.log(`event.session.application.applicationId=${event.session.application.applicationId}`);
+        console.log(`event =${JSON.stringify(event)}`);
 
         /**
          * Uncomment this if statement and populate with your skill's application ID to
