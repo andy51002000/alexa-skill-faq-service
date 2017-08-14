@@ -64,25 +64,18 @@
     {
       "name": "FaQToSetSecurityBoot",
       "samples": [
-        "How to Enable Secure Boot",
-        "How to Disable Secure Boot",
-        "How do I enable or disable Secure Boot on my computer",
-        "How do I disable Secure Boot on my notebook",
-        "How do I disable Secure Boot on my desktop",
-        "How do I disable Secure Boot on my netbook",
-        "How do I enable Secure Boot on my notebook",
-        "How do I enable Secure Boot on my desktop",
-        "How do I enable Secure Boot on my {platform}",
-        "I want to enable Secure Boot on my {platform}"
+        "how to enable the security boot on my {platform}",
+        "how do i enable security boot",
+        "how do i disable security boot on my {platform}",
+        "how do i disable security boot"
       ],
       "slots": [
         {
           "name": "platform",
           "type": "platform",
           "samples": [
-            "I use notebook",
-            "I use desktop",
-            "My computer is notebook"
+            "I use {platform}",
+            "My computer is {platform}"
           ]
         }
       ]

@@ -11,7 +11,12 @@ var dbhelper = require('./dynamodbHelper');
 
 // --------------- Some uesful function -----------------------------------------
 function isEmpty(obj){
-    return Object.keys(obj).length === 0;
+    
+    if(typeof obj === 'undefined'){
+        return true;
+    }    
+
+    return  Object.keys(obj).length === 0;
 }
 
 
@@ -120,9 +125,9 @@ function handleIntentRequest(intentRequest, session, callback) {
                 }   
             }         
 
-            console.log(queryHashKey)
+         
         }
-
+        console.log(queryHashKey)
 
         const cardTitle = intentRequest.intent.name;
         dbhelper(queryHashKey, function (res) {
