@@ -1,4 +1,4 @@
-LAMBDA_FUNCTION_NAME=myFunctionName
+LAMBDA_FUNCTION_NAME=myfunctionName
 
 git add -A
 git commit -m "$1"
