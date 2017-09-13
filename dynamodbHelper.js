@@ -25,7 +25,7 @@ var getItem = function (queryHashKey, callback) {
         if (err) console.log(err, err.stack); // an error occurred
         else console.log(data);           // successful response
 
-        callback(`The answer is: ${data.Items[0].ans.S} `);
+        callback(`${data.Items[0].ans.S} `);
         //return `The answer is: ${data.Items[0].ans.S} `;
     })
 

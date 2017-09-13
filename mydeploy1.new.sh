@@ -1,8 +1,8 @@
 LAMBDA_FUNCTION_NAME=myfunctionName
 
-git add -A
-git commit -m "$1"
-git push -u origin master
+#git add -A
+#git commit -m "$1"
+#git push -u origin master
 
 mkdir temp
 rm -f temp/app.zip

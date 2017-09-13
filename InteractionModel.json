@@ -33,6 +33,17 @@
       "slots": []
     },
     {
+      "name": "FaQToDriverDownload",
+      "samples": [
+        "Where can I download acer pc drivers",
+        "Where can I download drivers",
+        "Where to download driver",
+        "Where to download drivers",
+        "Where can I find drivers"
+      ],
+      "slots": []
+    },
+    {
       "name": "FaQToLaunchBootMenu",
       "samples": [
         "how to open the boot menu",
@@ -41,6 +52,50 @@
         "tell me how to get the Boot Menu to work",
         "tell me how to launch the boot menu",
         "tell me how to open the boot menu"
+      ],
+      "slots": []
+    },
+    {
+      "name": "FaQToOfficeHour",
+      "samples": [
+        "What is the open hour for repair center",
+        "What is the business hour for repair center"
+      ],
+      "slots": []
+    },
+    {
+      "name": "FaQToPasswordReset",
+      "samples": [
+        " I forgot my password can acer help me reset it ",
+        "How to reset my pc password",
+        "How to reset pc password",
+        "How to reset my desktop password",
+        "How to reset my laptop password",
+        "How to reset my notebook password"
+      ],
+      "slots": []
+    },
+    {
+      "name": "FaQToPasswordResetTC",
+      "samples": [
+        "wang ji dian nao mi ma zen me ban",
+        "ru he zhong she dian nao de mi ma"
+      ],
+      "slots": []
+    },
+    {
+      "name": "FaQToRepairPhone",
+      "samples": [
+        "What is the toll free  number for Acer Computers"
+      ],
+      "slots": []
+    },
+    {
+      "name": "FaQToRepairPhoneTC",
+      "samples": [
+        "ke fu dian hua ji hao ",
+        "hong qi dian hua",
+        "dian hua hao ma"
       ],
       "slots": []
     },
@@ -97,6 +152,44 @@
           ]
         }
       ]
+    },
+    {
+      "name": "GetRepairCenterTC",
+      "samples": [
+        "{locationTC} na li you hong qi wei xiu zhan ne",
+        "{locationTC} fu jin you wei xiu zhan ma"
+      ],
+      "slots": [
+        {
+          "name": "locationTC",
+          "type": "locationTC",
+          "samples": [
+            "{locationTC}",
+            "wo zai {locationTC}"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GetSaleEvent",
+      "samples": [
+        "any sale event now",
+        "is there any sale event"
+      ],
+      "slots": []
+    },
+    {
+      "name": "GetShopLocation",
+      "samples": [
+        "any shop location nearby"
+      ],
+      "slots": [
+        {
+          "name": "location",
+          "type": "Location",
+          "samples": []
+        }
+      ]
     }
   ],
   "types": [
@@ -121,6 +214,32 @@
           "id": "3",
           "name": {
             "value": "Tokyo",
+            "synonyms": []
+          }
+        },
+        {
+          "id": "4",
+          "name": {
+            "value": "Orlando",
+            "synonyms": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "locationTC",
+      "values": [
+        {
+          "id": null,
+          "name": {
+            "value": "xi_zhi",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "guang_hua_shang_chang",
             "synonyms": []
           }
         }
@@ -198,6 +317,28 @@
           "value": "Which city are you in"
         }
       ]
+    },
+    {
+      "id": "Elicit.Intent-GetRepairCenterTC.IntentSlot-locationTC",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "nin zai shi me di fang ne "
+        }
+      ]
+    },
+    {
+      "id": "Elicit.Intent-GetShopLocation.IntentSlot-location",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "ni hao wo shi a leu sha, cone ba cone cone, cone ba cone, cone cone cone, Which City are you in"
+        }
+      ]
     }
   ],
   "dialog": {
@@ -231,6 +372,38 @@
             "confirmationRequired": false,
             "prompts": {
               "elicit": "Elicit.Intent-GetRepairCenter.IntentSlot-location"
+            }
+          }
+        ]
+      },
+      {
+        "name": "GetRepairCenterTC",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "locationTC",
+            "type": "locationTC",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicit": "Elicit.Intent-GetRepairCenterTC.IntentSlot-locationTC"
+            }
+          }
+        ]
+      },
+      {
+        "name": "GetShopLocation",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "location",
+            "type": "Location",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicit": "Elicit.Intent-GetShopLocation.IntentSlot-location"
             }
           }
         ]
