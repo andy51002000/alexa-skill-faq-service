@@ -135,7 +135,7 @@ function handleIntentRequest(intentRequest, session, callback) {
             console.log(reprompt);
             //self.emit(':tell',speechOutput, reprompt);
             callback({},
-                buildSpeechletResponse(cardTitle, speechOutput, reprompt, true));
+                buildSpeechletResponse(cardTitle, speechOutput, reprompt, false));
         })
     }
 }
